@@ -45,7 +45,7 @@ def main():
     
     elif method=="BC":
         
-        print("FC method is being used")
+        print("BC method is being used")
 
    
 

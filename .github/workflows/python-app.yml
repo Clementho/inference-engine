@@ -26,7 +26,7 @@ jobs:
 
     - name: Run script and check output
       run: |
-        output=$(python iengine.py test_HornKB.txt BC)
+        output=$(python iengine.py test_HornKB.txt FC)
         echo "Output: $output"
         if [ "$output" == "YES: a, b, p2, p3, p1, c, e, f, d" ]; then
           echo "Output is correct"
