@@ -33,9 +33,9 @@ jobs:
         else
           echo "Output is incorrect"
           exit 1  # This will fail the workflow if output is not as expected
+        fi  # Closing the if statement with fi
       shell: bash
       
-
     - name: Check output
       run: |
         echo "Script execution completed"
