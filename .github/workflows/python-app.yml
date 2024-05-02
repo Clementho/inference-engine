@@ -28,12 +28,13 @@ jobs:
       run: |
         output=$(python iengine.py test_HornKB.txt FC)
         echo "Output: $output"
-        if [ "$output" == "YES: a, b, p2, p3, p1, c, e, f, d" ]; then
+        if [[ "$output" == "YES: a, b, p2, p3, p1, c, e, f, d" ]]; then
           echo "Output is correct"
         else
           echo "Output is incorrect"
           exit 1  # This will fail the workflow if output is not as expected
       shell: bash
+      
 
     - name: Check output
       run: |
