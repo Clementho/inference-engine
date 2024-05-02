@@ -2,9 +2,7 @@ import sys
 
 from textfile_reader import ProblemFileReader
 
-from logic import PropKB,kb2expr
-
-
+from kb import PropDefiniteKB,expr_handle_infix_imp,expr
 
 
 
@@ -25,37 +23,29 @@ def main():
 
     file_reader = ProblemFileReader(filename) # Create a file reader
     problem_details = file_reader.get_content_from_file()
-    print("Knowledge Base:", problem_details['knowledge_base'])
-    print("Query:", problem_details['query'])
+    # print("Knowledge Base:", problem_details['knowledge_base'])
+    # print("Query:", problem_details['query'])
 
-    # kb = PropKB()
-    # for sentence in problem_details['knowledge_base']:
+    definite_clauses_KB = PropDefiniteKB()
 
-    #     kb.tell(kb2expr(sentence))
-    # print(kb.clauses)
+    for clause in problem_details['knowledge_base']:
+        clause = expr_handle_infix_imp(clause)
+        definite_clauses_KB.tell(expr(clause))
 
-    # grid_size, initial_state, goal_states, walls = file_reader.get_content_from_file()
-    # problem = RobotNavigationProblem(initial=initial_state, goal=goal_states, grid_size=grid_size, walls=walls) # get problem
-
-    # print("Initial State:", problem.initial)
-    # print("Goal States:", problem.goal)
-    # print("Grid Size:", problem.grid_size)
-    # print("Walls:", problem.walls)
-
+    
     if method == "TT":
         print("TT method is being used")
-       
-    
- 
-    
+        
 
     elif method=="FC":
+        result = definite_clauses_KB.get_FC_solution(expr(problem_details['query']))  # Check if query can be derived
+        result_string = ", ".join(str(symbol) for symbol in definite_clauses_KB.propositional_symbols_entailed_from_KB)
+        print(f"YES; {result_string}" if result else "NO")
         
-        print("FC method is being used")
     
     elif method=="BC":
         
-        print("FC method is being used")
+        print("BC method is being used")
 
    
 
@@ -67,7 +57,7 @@ def main():
             
 
 
-    # Your script logic here
+    
 
 if __name__ == "__main__":
     main()
