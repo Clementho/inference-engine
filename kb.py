@@ -35,6 +35,7 @@ And a few other functions:
 import heapq
 import itertools
 import random
+import copy
 from collections import defaultdict, Counter
 
 # import networkx as nx
@@ -218,7 +219,8 @@ A, B, C, D, E, F, G, P, Q, a, x, y, z, u = map(Expr, 'ABCDEFGPQaxyzu')
 
 
 # ______________________________________________________________________________
-
+total_models = 0
+correct_models = 0
 
 def tt_entails(kb, alpha):
     """
@@ -229,7 +231,7 @@ def tt_entails(kb, alpha):
     >>> tt_entails(expr('P & Q'), expr('Q'))
     True
     """
-    assert not variables(alpha)
+    # assert not variables(alpha)
     symbols = list(prop_symbols(kb & alpha))
     return tt_check_all(kb, alpha, symbols, {})
 
@@ -237,9 +239,12 @@ def tt_entails(kb, alpha):
 def tt_check_all(kb, alpha, symbols, model):
     """Auxiliary routine to implement tt_entails."""
     if not symbols:
+        global total_models, correct_models
+        total_models += 1
         if pl_true(kb, model):
             result = pl_true(alpha, model)
             assert result in (True, False)
+            correct_models += 1
             return result
         else:
             return True
@@ -594,37 +599,6 @@ def pl_fc_entails(kb, q):
     return False
 
 
-"""
-[Figure 7.13]
-Simple inference in a wumpus world example
-"""
-wumpus_world_inference = expr('(B11 <=> (P12 | P21))  &  ~B11')
-
-"""
-[Figure 7.16]
-Propositional Logic Forward Chaining example
-"""
-horn_clauses_KB = PropDefiniteKB()
-for clause in ['P ==> Q',
-               '(L & M) ==> P',
-               '(B & L) ==> M',
-               '(A & P) ==> L',
-               '(A & B) ==> L',
-               'A', 'B']:
-    horn_clauses_KB.tell(expr(clause))
-
-"""
-Definite clauses KB example
-"""
-definite_clauses_KB = PropDefiniteKB()
-for clause in ['(B & F) ==> E',
-               '(A & E & F) ==> G',
-               '(B & C) ==> F',
-               '(A & B) ==> D',
-               '(E & F) ==> H',
-               '(H & I) ==>J',
-               'A', 'B', 'C']:
-    definite_clauses_KB.tell(expr(clause))
 
 
 # Symbols
@@ -648,21 +622,6 @@ def new_disjunction(sentences):
 
 def is_variable(x):
     """A variable is an Expr with no args and a lowercase symbol as the op."""
-    return isinstance(x, Expr) and not x.args and x.op[0].islower()
+    return isinstance(x, Expr) and not x.args 
 
 
-# kb = ['It_is_raining & ~I_have_an_umbrella => I_get_wet', 'It_is_raining', '~I_have_an_umbrella']
-# print(kb2expr(kb))
-
-# query = 'I_get_wet'
-# print(expr(query))
-
-# print("Is query ", query, " entailed by the knowledge base ", kb, "?")
-# print(tt_entails(kb2expr(kb), expr(query)))
-
-# kb2 = ['It_is_sweet \/ It_is_sour', '~It_is_sour']
-
-# query2 = '~It_is_sweet'
-
-# print("Is query ", query2, " entailed by the knowledge base ", kb2, "?")
-# print(tt_entails(kb2expr(kb2), expr(query2)))
