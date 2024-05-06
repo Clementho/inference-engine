@@ -1,0 +1,15 @@
+Test Case: test-0.txt
+Program Output:
+YES; a, b, p2, p3, p1, c, e, f, d
+
+
+Test Case: test-1.txt
+Program Output:
+YES; A, B, L, M, P, L, Q
+
+
+Test Case: test-2.txt
+Program Output:
+YES; P
+
+

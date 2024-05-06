@@ -1,4 +1,0 @@
-TELL
-P=>Q;R=>Q;P
-ASK
-P
