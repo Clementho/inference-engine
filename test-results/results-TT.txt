@@ -1,0 +1,15 @@
+Test Case: test-0.txt
+Program Output:
+YES; 3
+
+
+Test Case: test-1.txt
+Program Output:
+YES; 1
+
+
+Test Case: test-2.txt
+Program Output:
+YES; 2
+
+
