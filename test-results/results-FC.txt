@@ -1,15 +1,319 @@
 Test Case: test-0.txt
+TELL
+p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p2&p1&p3=>d; p1&p3 => c; a; b; p2;
+ASK
+d
 Program Output:
-YES; a, b, p2, p3, p1, c, e, f, d
+YES; a, b, p2, p3, p1, d
 
 
 Test Case: test-1.txt
+TELL
+P=> Q; L&M => P; B&L => M; A&P => L; A&B => L; A; B;
+ASK
+Q
 Program Output:
-YES; A, B, L, M, P, L, Q
+YES; A, B, L, M, P, Q
 
 
 Test Case: test-2.txt
+TELL
+P=>Q; R=>Q; P
+ASK
+Q
+Program Output:
+YES; P, Q
+
+
+Test Case: test-3.txt
+TELL
+Q
+ASK
+Q
+Program Output:
+YES; Q
+
+
+Test Case: test-4.txt
+TELL
+P; A; C; E; Q; V; Z
+ASK
+P
 Program Output:
 YES; P
+
+
+Test Case: test-5.txt
+TELL
+P => Q ; Q => R ; R => P;
+ASK
+R
+Program Output:
+NO
+
+
+Test Case: test-6.txt
+TELL
+P => Q ; P => R ; P => Q
+ASK
+Q
+Program Output:
+NO
+
+
+Test Case: test-7.txt
+TELL
+P1 => Q; P2 & P3 => R; Q => S; R => T; T & S => U; U => V; P1;
+ASK
+V
+Program Output:
+NO
+
+
+Test Case: test-8.txt
+TELL
+p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p2&p1&p3=>d; p1&p3 => c; a; b; p2;
+ASK
+h
+Program Output:
+NO
+
+
+Test Case: test-9.txt
+TELL
+p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p2&p1&p3=>d; p1&p3 => c; a; b; p2;
+ASK
+j
+Program Output:
+NO
+
+
+Test Case: test-10.txt
+TELL
+P=> Q; L&M => P; B&L => M; A&P => L; A; B;
+ASK
+Q
+Program Output:
+NO
+
+
+Test Case: test-11.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-11.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-12.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-12.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-13.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-13.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-14.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-14.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-15.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-15.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-16.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-16.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-17.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-17.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-18.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-18.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-19.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-19.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-20.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-20.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+
+Test Case: test-21.txt
+
+Error executing test case: Command '['python', 'iengine.py', 'test-cases\\test-21.txt', 'FC']' returned non-zero exit status 1.
+
+Error output:
+Traceback (most recent call last):
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 78, in <module>
+    main()
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\iengine.py", line 27, in main
+    problem_details = file_reader.get_content_from_file()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 52, in get_content_from_file
+    problem_details = self.parse_problem_content(content)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cleme\Documents\SUTS Degree\Year 3 Semester 2\COS30019 Introduction to Artificial Intelligence\Assignment-2\inference-engine\textfile_reader.py", line 42, in parse_problem_content
+    tell_section = sections[0].strip().split('TELL')[1].strip()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
 
 

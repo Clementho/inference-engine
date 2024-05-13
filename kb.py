@@ -569,6 +569,10 @@ class PropDefiniteKB(PropKB):
         This could be cached away for O(1) speed, but we'll recompute it."""
         return [c for c in self.clauses if c.op == '==>' and p in conjuncts(c.args[0])]
     
+    def clauses_with_goal(self, p):
+        """Return a list of the clauses in KB that have p as their goal."""
+        return [c for c in self.clauses if c.op == '==>' and p in conjuncts(c.args[1])]
+    
     def get_FC_solution(self, query):
         return self.ask_if_true(expr(query))
 
@@ -586,20 +590,83 @@ def pl_fc_entails(kb, q):
 
     while agenda:
         p = agenda.pop(0)
-        kb.propositional_symbols_entailed_from_KB.append(p)
+        
         if p == q:
+            kb.propositional_symbols_entailed_from_KB.append(p)
             return True
+        
         if not inferred[p]:
             inferred[p] = True
+            kb.propositional_symbols_entailed_from_KB.append(p)
+            
             for c in kb.clauses_with_premise(p):
                 count[c] -= 1
                 if count[c] == 0:
-                    agenda.insert(0, c.args[1])
+                    agenda.append(c.args[1])
 
     return False
 
+# BC follows Depth-First Search principles
+# Local Variables:
+# - facts: Known facts in the KB
+# - goal_stack: Set containing the symbols that are currently being evaluated (used to prevent infinite loops).
+# - q_clauses: Clauses with the q as the goal
+# - evaluated_clauses: Dictionary to track whether each q_clause is inferrable
+# Pseudocode:
+# If the query symbol is a known fact or it already exists in the kb inferred symbols list:
+#    Add the symbol to the inferred symbols list if not already present
+#    Return True
+# Add the query symbol to the goal stack
+# Get all the clauses in which the query is a goal
+# For each symbol in each clause:
+    # The clause is non-inferrable if the evaluated symbol is found in the goal stack & not in the inferred symbols list
+# If any clause of a symbol is True, then the symbol is inferrable
 
+def pl_bc_entails(kb, q, goals=set()):
+    """
+    Performs backwards chaining recursively to determine if a query can be entailed from the given knowledge base
+    
+    Parameters:
+    - kb: Knowledge base containing the rules and facts represented as a list of strings.
+    - q: The query symbol to be checked for entailment.
+    - goals: Set containing the symbols that are currently being evaluated (used to prevent infinite loops).
+    
+    Returns: Boolean indicating whether the query can be entailed from the knowledge base.
+    """
+    goal_stack = goals
+    facts = [s for s in kb.clauses if is_prop_symbol(s.op)]
 
+    if q in kb.propositional_symbols_entailed_from_KB:
+        return True
+
+    if q in facts:
+        kb.propositional_symbols_entailed_from_KB.append(q)
+        return True
+    
+    goal_stack.add(q) # Add the query symbol to the goal stack to track its evaluation
+    q_clauses = kb.clauses_with_goal(q) # Get clauses with the query as the goal
+    evaluated_clauses = defaultdict(bool) # Dictionary to track evaluated clauses
+
+    # Check if the query is non-inferrable
+    if not q_clauses and q not in kb.propositional_symbols_entailed_from_KB and q not in facts:
+        return False
+
+    for c in q_clauses:
+        clause_inferrable = True
+        for p in conjuncts(c.args[0]):
+            # If any premise symbol is part of the goal stack and not yet entailed, assume it is False
+            if (p in goal_stack and p not in kb.propositional_symbols_entailed_from_KB) or not pl_bc_entails(kb, p, goal_stack):
+                clause_inferrable = False            
+                break
+
+        evaluated_clauses[c] = clause_inferrable
+
+    # If no clauses evaluated to True, then symbol is non-inferrable
+    if evaluated_clauses and not any(evaluated_clauses.values()):
+        return False
+
+    kb.propositional_symbols_entailed_from_KB.append(q)
+    return True
 
 # Symbols
 
