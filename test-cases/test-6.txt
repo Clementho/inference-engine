@@ -1,0 +1,4 @@
+TELL
+P => Q ; P => R ; P => Q
+ASK
+Q
