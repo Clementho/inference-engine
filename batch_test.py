@@ -21,18 +21,25 @@ def run_test_cases(inference_method):
         for file_name in files:
             if file_name.endswith(".txt"):
                 test_case_path = os.path.join(TEST_CASES_DIR, file_name)
-                command = ["python", "iengine.py", test_case_path, inference_method]
+                
+                # Read and print the contents of the test case file
+                with open(test_case_path, "r") as test_case_file:
+                    test_case_content = test_case_file.read()
+                    output.write(f"Test Case: {file_name}\n")
+                    output.write(test_case_content)
+                    output.write("\n")
 
+                command = ["python", "iengine.py", test_case_path, inference_method]
+                
                 try:
                     result = subprocess.run(command, capture_output=True, text=True, check=True)
-                    output.write(f"Test Case: {file_name}\n")
                     output.write("Program Output:\n")
                     output.write(result.stdout)
                     output.write("\n\n")
 
                 except subprocess.CalledProcessError as error:  # Capture and record the error stack trace to the output results text file
                     print(f"Error executing test case: <{file_name}>")
-                    output.write(f"Error executing test case {file_name}: {error}\n\n")
+                    output.write(f"Error executing test case: {error}\n\n")
                     output.write("Error output:\n")
                     output.write(error.stderr) # Access the error message from the CalledProcessError instance
                     output.write("\n\n")
