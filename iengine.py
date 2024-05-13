@@ -2,7 +2,7 @@ import sys
 
 from textfile_reader import ProblemFileReader
 
-from kb import PropDefiniteKB,expr_handle_infix_imp,expr,kb2expr
+from kb import PropDefiniteKB,expr_handle_infix_imp,expr,kb2expr,pl_fc_entails,pl_bc_entails
 
 from tt import TruthTable
 
@@ -51,12 +51,14 @@ def main():
             print("NO")
 
     elif method=="FC":
-        result = definite_clauses_KB.get_FC_solution(expr(query))  # Check if query can be derived
+        result = pl_fc_entails(definite_clauses_KB, expr(query))  # Check if query can be derived
         result_string = ", ".join(str(symbol) for symbol in definite_clauses_KB.propositional_symbols_entailed_from_KB)
         print(f"YES; {result_string}" if result else "NO")
 
     elif method=="BC":
-        print("BC method is being used")
+        result = pl_bc_entails(definite_clauses_KB, expr(query))
+        result_string = ", ".join(str(symbol) for symbol in definite_clauses_KB.propositional_symbols_entailed_from_KB)
+        print(f"YES; {result_string}" if result else "NO")
        
 
 
