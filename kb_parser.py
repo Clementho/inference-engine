@@ -33,7 +33,7 @@ def parse_sentences(sentences):
 
 def is_horn_form(kb, query):
     """
-    Checks if the given KB is in Horn form.
+    Checks if the given KB and query is in Horn form.
     """
     kb_valid_horn = True
     
@@ -89,9 +89,9 @@ def to_cnf(s):
     s = expr(s)
     if isinstance(s, str):
         s = expr(s)
-    s = eliminate_implications(s)  # Steps 1, 2 from p. 253
-    s = move_not_inwards(s)  # Step 3
-    return distribute_and_over_or(s)  # Step 4
+    s = eliminate_implications(s)
+    s = move_not_inwards(s)
+    return distribute_and_over_or(s)
 
 
 def eliminate_implications(s):
@@ -107,9 +107,6 @@ def eliminate_implications(s):
         return a | ~b
     elif s.op == '<=>':
         return (a | ~b) & (b | ~a)
-    elif s.op == '^':
-        assert len(args) == 2  # TODO: relax this restriction
-        return (a & ~b) | (~a & b)
     else:
         assert s.op in ('&', '|', '~')
         return Expr(s.op, *args)

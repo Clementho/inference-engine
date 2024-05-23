@@ -1,13 +1,9 @@
 """Provides some utilities widely used by other modules"""
 
-import bisect
 import collections
 import collections.abc
 import functools
-import heapq
-import operator
 import os.path
-import random
 from itertools import chain, combinations
 from statistics import mean
 

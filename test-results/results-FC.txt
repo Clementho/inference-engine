@@ -99,9 +99,9 @@ NO
 
 Test Case: test-12.txt
 TELL
-A => B; C => D; E => F; G => H; I => J; A;
+A => B; C => D; E => F; G => H; I => J; K => L; M => N; O => P; Q => R; S => T; A;
 ASK
-J
+T
 Program Output:
 NO
 

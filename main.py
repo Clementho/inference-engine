@@ -17,7 +17,7 @@ HORNKB_ONLY_METHODS = ["FC", "BC"]
 def main():
     # Check the number of arguments passed to the script
     if len(sys.argv) < 3:
-        print("Usage: python iengine.py <filename> <method>")
+        print("Usage: python main.py <filename> <method>")
         sys.exit(1)
 
     # Access the arguments
@@ -86,27 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-## DUMP ZONE
-
-    # test_sentences = [
-    #     "p1 <= p2 => p3 || p4",
-    #     "p1 <=p2 =>p3 ||p4",  # No spaces between operators and operands
-    #     "a <= b && c => d || e",
-    #     "p1 <=p2 =>p3 <=> p4",  # Includes a partial match for <=>
-    #     "x <= y <=> z => w || q"  # Complex expression
-    # ]
-
-    # for sentence in test_sentences:
-    #     parsed_sentence = expr_parse_infix_ops(sentence)
-    #     print(f"Original: {sentence}")
-    #     print(f"Parsed: {parsed_sentence}")
-    #     print("---")
-
-    # Convert the knowledge base and query to Expr objects
-    # KB expression is the conjunction (AND &) of all sentences in the KB
