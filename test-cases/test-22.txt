@@ -1,4 +1,4 @@
 TELL
-Q
+P & ~P;
 ASK
-Q
+P

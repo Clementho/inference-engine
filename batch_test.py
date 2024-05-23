@@ -3,7 +3,7 @@ import subprocess
 
 TEST_CASES_DIR = "test-cases"
 TEST_OUTPUT_DIR = "test-results"
-INFERENCE_METHODS = ["TT", "FC", "BC"]
+INFERENCE_METHODS = ["TT", "DPLL", "FC", "BC"]
 
 # Output results to "test-results" directory, file format: results-<inference-method-abbreviation>.txt
 def run_test_cases(inference_method):
@@ -20,6 +20,8 @@ def run_test_cases(inference_method):
     with open(output_file, "w") as output: #Override file contents on write
         for file_name in files:
             if file_name.endswith(".txt"):
+                print(f"Executing test case - <{file_name}>")
+
                 test_case_path = os.path.join(TEST_CASES_DIR, file_name)
                 
                 # Read and print the contents of the test case file
@@ -29,7 +31,7 @@ def run_test_cases(inference_method):
                     output.write(test_case_content)
                     output.write("\n")
 
-                command = ["python", "iengine.py", test_case_path, inference_method]
+                command = ["python", "main.py", test_case_path, inference_method]
                 
                 try:
                     result = subprocess.run(command, capture_output=True, text=True, check=True)

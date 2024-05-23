@@ -1,4 +1,4 @@
 TELL
-P1 => Q; P2 & P3 => R; Q => S; R => T; T & S => U; U => V; P1;
+P => Q; R => Q; S => Q; T => Q; U => Q; P;
 ASK
-V
+Q

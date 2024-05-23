@@ -1,0 +1,4 @@
+TELL
+(a <=> ~c) & b & (~b => a); c; ~a || b;
+ASK
+b
