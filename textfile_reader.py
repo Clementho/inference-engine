@@ -1,7 +1,6 @@
 class ProblemFileReader:
     """
-    A class to read and parse problem definitions from a text file.
-    The expected file format includes the grid size, initial state, goal states, and wall positions.
+    A class to read and parse knowledge base from a text file.
     """
     
     def __init__(self, file_path):
@@ -51,13 +50,3 @@ class ProblemFileReader:
         content = self.read_problem_file()
         problem_details = self.parse_problem_content(content)
         return problem_details
-
-# Example usage:
-def main():
-    file_reader = ProblemFileReader('test_HornKB.txt')
-    problem_details = file_reader.get_content_from_file()
-    print("Knowledge Base:", problem_details['knowledge_base'])
-    print("Query:", problem_details['query'])
-
-if __name__ == "__main__":
-    main()
