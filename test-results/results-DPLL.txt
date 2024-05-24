@@ -4,7 +4,7 @@ P1 => Q; P2 & P3 => R; Q => S; R => T; T & S => U; U => V; P1;
 ASK
 V
 Program Output:
-NO; {P1: True, Q: True, S: True, V: False, U: False, T: False, R: False, P2: False}
+NO; {P1: True, Q: True, S: True, V: False, U: False, T: False, R: False, P3: False}
 
 
 Test Case: test-2.txt
@@ -103,7 +103,7 @@ A => B; C => D; E => F; G => H; I => J; K => L; M => N; O => P; Q => R; S => T; 
 ASK
 T
 Program Output:
-NO; {A: True, B: True, T: False, S: False, L: True, I: False, M: False, E: False, R: True, P: True, H: True, C: False}
+NO; {A: True, B: True, T: False, S: False, L: True, M: False, O: False, H: True, D: True, I: False, Q: False, E: False}
 
 
 Test Case: test-13.txt
@@ -130,7 +130,7 @@ TELL
 ASK
 z
 Program Output:
-NO; {b: True, a: True, c: True, d: False, z: False, g: True}
+NO; {b: True, a: True, c: True, d: False, z: False, f: False}
 
 
 Test Case: test-16.txt
@@ -139,7 +139,7 @@ TELL
 ASK
 ~x & (~y => ~z)
 Program Output:
-NO; {b: True, a: True, c: True, d: False, g: True, y: False, x: True}
+NO; {b: True, a: True, c: True, d: False, g: True, z: True, y: False}
 
 
 Test Case: test-17.txt
@@ -157,7 +157,7 @@ TELL
 ASK
 d <=> ~b
 Program Output:
-NO; {d: True, c: True, a: True, b: True}
+NO; {c: True, a: True, b: True, d: True}
 
 
 Test Case: test-19.txt
@@ -211,6 +211,6 @@ TELL
 ASK
 B
 Program Output:
-NO; {B: False, E: False, A: True, F: True, C: True}
+NO; {B: False, A: False, E: False, F: True, C: True}
 
 

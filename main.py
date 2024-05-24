@@ -22,7 +22,7 @@ def main():
 
     # Access the arguments
     filename = sys.argv[1]
-    method = sys.argv[2]
+    method = sys.argv[2].upper()
 
     # Instantiate the problem file reader and read the contents of the problem text file
     file_reader = ProblemFileReader(filename) # Create a file reader
